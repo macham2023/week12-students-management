@@ -61,8 +61,8 @@ def add_product(store_dict,name,price,quantity):
 
 def update_stock(store_dict,name,quantity):
     if name in store_dict:
-        store_dict[name].update({"quantity":quantity})
-        print(store_dict)
+        store_dict[name]["quantity"] += quantity
+        print(f"The updated version is: {store_dict}")
     else:
         print(f"{name} does not exist!")
 
