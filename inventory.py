@@ -42,7 +42,7 @@ def implementation(user_choice):
         most_expensive_product(store_dict)
 
     elif user_choice == 6:
-        total_potential_sale(store_dict)
+        print("the total potential sale is :",total_potential_sale(store_dict))
 
     elif user_choice == 7:
         terminate()
@@ -53,7 +53,8 @@ def implementation(user_choice):
 def add_product(store_dict,name,price,quantity):
     if name  not in store_dict:
         store_dict[name] ={"price":price,"quantity":quantity}
-        print(f"{name} succesfully added")
+        print(f"{name} succesfully addeda")
+        print(store_dict)
         return 1
     else:
         print(f"{name} already exist")
@@ -86,17 +87,23 @@ def display_inventory(store_dict):
 
 def most_expensive_product(store_dict):
     expensive = 0
-    for key,value in store_dict.items():
-        if value["price"] > expensive:
-            expensive = value["price"]
-            product_name = key
-    print(f"the most expensive product in the dictionary is {product_name} with: {expensive}")
+    if len(store_dict) != 0:
+        for key,value in store_dict.items():
+            if value["price"] > expensive:
+                expensive = value["price"]
+                product_name = key
+        print(f"the most expensive product in the dictionary is: {product_name} with: {expensive}")
+    else:
+        print("No product is available")
 
 def total_potential_sale(store_dict):
-    for value in store_dict.values():
-        total_sale =  (value["price"] * value["quantity"])
-        print(sum(total_sale))
-        return total_sale
+    if len(store_dict) != 0:
+        for value in store_dict.values():
+            total_sale =  (value["price"] * value["quantity"])
+  
+            return total_sale
+    else:
+        print("No products available!")
 
 def terminate():
     global to_execute
